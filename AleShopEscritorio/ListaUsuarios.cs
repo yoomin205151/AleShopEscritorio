@@ -17,15 +17,14 @@ namespace AleShopEscritorio
 {
     public partial class ListaUsuarios : Form
     {
-        private Menu menuForm;
+        private Menu menuForm;       
         List<Usuario> usuarios;
         public ListaUsuarios(Menu menu)
         {
-            InitializeComponent();
-            mostrarUsuarios();
+            InitializeComponent();          
+            mostrarUsuarios();           
             menuForm = menu;
             
-         
         }
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

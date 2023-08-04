@@ -28,6 +28,13 @@ namespace AleShopEscritorio
             CultureInfo Español = new CultureInfo("es-ES");
             System.Threading.Thread.CurrentThread.CurrentCulture = Español;
             System.Threading.Thread.CurrentThread.CurrentUICulture = Español;
+
+            int id = Convert.ToInt32(lbl_id.Text);
+
+            if (id != 1002)
+            {
+                button2.Enabled = false;
+            }
         }
        
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -67,8 +74,7 @@ namespace AleShopEscritorio
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(lbl_id.Text);
+        {           
             ListaUsuarios usuarios = new ListaUsuarios(this);
             usuarios.Show();
             this.Hide();

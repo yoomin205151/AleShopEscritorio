@@ -62,7 +62,7 @@ namespace AleShopEscritorio.Controlador
         public static List<Venta> obtenerVentas()
         {
             List<Venta> list = new List<Venta>();
-            string query = "select id, fecha, total, id_usuario from venta where id_origen = 2";
+            string query = "select id, fecha, total, id_usuario from venta where id_origen = 2 ORDER BY fecha DESC";
 
             SqlCommand cmd = new SqlCommand(query, DBControlador.conexion);
 

@@ -237,14 +237,20 @@ namespace AleShopEscritorio
         }
         private void btn_venta_Click(object sender, EventArgs e)
         {
-            string nombreClienteSeleccionada = box_cliente.SelectedItem.ToString();
-            int idCliente = usuarios.Where(cat => cat.nombre == nombreClienteSeleccionada).FirstOrDefault().id;
+            string nombreClienteSeleccionado = box_cliente.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(nombreClienteSeleccionado))
+            {
+                MessageBox.Show("Debe seleccionar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int idCliente = usuarios.Where(cat => cat.nombre == nombreClienteSeleccionado).FirstOrDefault().id;
             int total = Convert.ToInt32(lbl_total.Text);
 
             Venta venta = new Venta(total, idCliente);
 
             try
-            {
+            {               
                 // Creamos la venta y obtenemos el ID de la venta recién creada
                 int idVenta = VentaControlador.CrearVenta(venta);
 
